@@ -44,14 +44,6 @@ if __name__ == '__main__': ##entry point
     except Exception as e:
         raise e # raise exception in terminal
 ```
-## Sample Dataset - AND
-x1 | x2 | y
-- | - | -
-0 | 0 | 0
-0 | 1 | 0
-1 | 0 | 0
-1 | 1 | 1
-
 ### Tips to create other models
 * Copy the sample code for AND.
 * Replace data with desired data.
