@@ -10,6 +10,8 @@ logging.basicConfig(filename = os.path.join(log_dir,"running_logs.log"),level=lo
 
 
 class Perceptron:
+  """[A Perceptron model creation class]
+  """
   def __init__(self,eta,epochs,no_of_input):
     self.weights = np.random.randn(no_of_input+1) *1e-4 #small weight initialization
     logging.info(f"initial weights before training: {self.weights}")

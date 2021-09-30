@@ -21,31 +21,40 @@ logging.basicConfig(filename = os.path.join(log_dir,"running_logs.log"),level=lo
 
 
 def createModel(data, eta, epoch, file_name, plot_name, no_of_input=2):       
-      
-    logging.info(f"\n\n>>>>>>>>>>Starting training>>>>>>>>>>>>>>>>{file_name}")
-    logging.info(f"eta = {str(eta)} epochs ={str(epoch)}\n")
+  """[Creates a Perceptron model]
 
-    df = pd.DataFrame(data)
+  Args:
+      data ([numpy array]): [A numpy array of input and expected outputs]
+      eta ([float]): [learning rate]
+      epoch ([int]): [number of repetitions for training]
+      file_name ([type]): [name of the model to be created]
+      plot_name ([type]): [name of plot to be created]
+      no_of_input (int, optional): [number of inputs in the required for this model]. Defaults to 2.
+  """
+  logging.info(f"\n\n>>>>>>>>>>Starting training>>>>>>>>>>>>>>>>{file_name}")
+  logging.info(f"eta = {str(eta)} epochs ={str(epoch)}\n")
 
-    X,y = prepare_data(df)
-    logging.info(f"X={X}")
-    logging.info(f"Y={y}")    
+  df = pd.DataFrame(data)
 
-    model = Perceptron(eta, epoch, no_of_input)
+  X,y = prepare_data(df)
+  logging.info(f"X={X}")
+  logging.info(f"Y={y}")    
 
-    model.fit(X, y)
+  model = Perceptron(eta, epoch, no_of_input)
 
-    model.predict(X)
+  model.fit(X, y)
 
-    model.total_loss()
+  model.predict(X)
 
-    save_model(model, file_name)
+  model.total_loss()
 
-    
-    logging.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+  save_model(model, file_name)
 
-    if no_of_input == 2:
-      save_plot(df, plot_name, model)
+  
+  logging.info(f">>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+
+  if no_of_input == 2:
+    save_plot(df, plot_name, model)
 
 def prepare_data(df):
   """It is used to seperate dependent variables and independent variables
